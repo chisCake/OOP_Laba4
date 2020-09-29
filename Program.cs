@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Xml.Serialization;
-
-using Microsoft.Win32.SafeHandles;
 
 namespace OOP_Laba4 {
 	class Program {

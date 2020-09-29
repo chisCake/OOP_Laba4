@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 
 #pragma warning disable CS0660 // Тип определяет оператор == или оператор !=, но не переопределяет Object.Equals(object o)
 #pragma warning disable CS0661 // Тип определяет оператор == или оператор !=, но не переопределяет Object.GetHashCode()
@@ -134,7 +131,7 @@ namespace OOP_Laba4 {
 		public static bool operator !=(Set set1, Set set2) {
 			return !set1.IsEqual(set2);
 		}
-
+		rg
 		// Проверка на равенство
 		public static bool operator ==(Set set1, Set set2) {
 			return set1.IsEqual(set2);
