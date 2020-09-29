@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace OOP_Laba4 {
 	static class StatisticOperation {
-		public static double? Sum(Set set) {
+		public static double? Sum(this Set set) {
 			double? sum = null;
 			foreach (var item in set) {
 				if (double.TryParse(item, out double result)) {
@@ -15,7 +15,7 @@ namespace OOP_Laba4 {
 			return sum;
 		}
 
-		public static double? MinMaxDiff(Set set) {
+		public static double? MinMaxDiff(this Set set) {
 			double? diff = null;
 			var list = new List<double>();
 			foreach (var item in set) {
@@ -42,7 +42,7 @@ namespace OOP_Laba4 {
 			return counter;
 		}
 
-		public static (List<string> Result, bool OnlyStr) Shortest(Set set) {
+		public static (List<string> Result, bool OnlyStr) Shortest(this Set set) {
 			int length = int.MaxValue;
 			var result = new List<string>();
 			//var numbers = new List<double>();
@@ -69,7 +69,7 @@ namespace OOP_Laba4 {
 			return (result, false);
 		}
 
-		public static void Sort(ref Set set, SortType type) {
+		public static void Sort(this Set set, SortType type) {
 			var nums = new List<double>();
 			var strs = new List<string>();
 			foreach (var item in set) {

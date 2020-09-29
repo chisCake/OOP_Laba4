@@ -23,18 +23,18 @@ namespace OOP_Laba4 {
 	class Set {
 		// Данные
 		public List<string> Data { get; private set; }
-		public Owner Owner { get; private set; } = new Owner();
+		public Owner OwnerData { get; private set; } = new Owner();
 		public DateTime Date { get; private set; } = DateTime.Now;
 
 		// Конструкторы
-		public Set(Owner owner = null) {
+		public Set(Owner OwnerData = null) {
 			Data = new List<string>();
-			Owner = owner != null ? new Owner(owner) : new Owner();
+			OwnerData = OwnerData != null ? new Owner(OwnerData) : new Owner();
 		}
 
-		public Set(string[] data, Owner owner = null) {
+		public Set(string[] data, Owner OwnerData = null) {
 			Data = new List<string>(data);
-			Owner = owner != null ? new Owner(owner) : new Owner();
+			OwnerData = OwnerData != null ? new Owner(OwnerData) : new Owner();
 		}
 
 		public Set(params dynamic[] data) {
@@ -43,7 +43,7 @@ namespace OOP_Laba4 {
 				list.Add(item.ToString());
 			}
 			Data = list;
-			Owner = new Owner();
+			OwnerData = new Owner();
 		}
 
 		public Set(Owner owner = null, params dynamic[] data) {
@@ -52,12 +52,12 @@ namespace OOP_Laba4 {
 				list.Add(item.ToString());
 			}
 			Data = list;
-			Owner = owner != null ? new Owner(owner) : new Owner();
+			OwnerData = owner != null ? new Owner(owner) : new Owner();
 		}
 
 		public Set(Set set, string item, MathOperation type) {
 			Data = new List<string>(set.Data);
-			Owner = new Owner(set.Owner);
+			OwnerData = new Owner(set.OwnerData);
 			switch (type) {
 				case MathOperation.plus:
 					Add(item);
@@ -143,6 +143,52 @@ namespace OOP_Laba4 {
 		// Проверка на пересечение
 		public static bool operator %(Set set1, Set set2) {
 			return set1.Data.Any(elem1 => set2.Data.Any(elem2 => elem1 == elem2));
+		}
+
+		public class Owner {
+			public string Id { get; private set; }
+			public string Name { get; set; }
+			public string Organization { get; set; }
+
+			public Owner() {
+				Id = "Не указано";
+				Name = "Не указано";
+				Organization = "Не указана";
+			}
+
+			public Owner(string name) {
+				Id = "0";
+				Name = name;
+				Organization = "Не указана";
+			}
+
+			public Owner(string id = "Не указано",
+						string name = "Не указано",
+						string organization = "Не указана") {
+
+				Id = id;
+				Name = name;
+				Organization = organization;
+			}
+
+			public Owner(
+				int id = 0,
+				string name = "Не указано",
+				string organization = "Не указана") {
+
+				if (id == 0)
+					Id = "Не указано";
+				else
+					Id = id.ToString();
+				Name = name;
+				Organization = organization;
+			}
+
+			public Owner(Owner owner) {
+				Id = owner.Id;
+				Name = owner.Name;
+				Organization = owner.Organization;
+			}
 		}
 	}
 }

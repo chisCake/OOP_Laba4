@@ -25,11 +25,11 @@ namespace OOP_Laba4 {
 
 		static void Main() {
 			List = new List<Set> {
-			new Set(new Owner(110, "Set1", "ЗАО СЕТ"), 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-			new Set(new Owner(123, "Set2", "ОАО СЕТ"), "один", "два", "три"),
-			new Set(new Owner("Set3"), 2, 4, 6),
-			new Set(new Owner("Set4"), "один", "два", "три"),
-			new Set(new Owner("Set5"), "один", 2, 5, -100.255, "два", 450, 2, 5)
+			new Set(new Set.Owner(110, "Set1", "ЗАО СЕТ"), 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+			new Set(new Set.Owner(123, "Set2", "ОАО СЕТ"), "один", "два", "три"),
+			new Set(new Set.Owner("Set3"), 2, 4, 6),
+			new Set(new Set.Owner("Set4"), "один", "два", "три"),
+			new Set(new Set.Owner("Set5"), "один", 2, 5, -100.255, "два", 450, 2, 5)
 			};
 
 
@@ -37,7 +37,7 @@ namespace OOP_Laba4 {
 				Console.Clear();
 				Console.WriteLine("Текущие множества:");
 				for (int i = 0; i < List.Count; i++) {
-					Console.Write($"{i + 1}) {List[i].Owner.Name}: ");
+					Console.Write($"{i + 1}) {List[i].OwnerData.Name}: ");
 					foreach (var item in List[i].Data)
 						Console.Write(item + " ");
 					Console.WriteLine();
@@ -126,10 +126,10 @@ namespace OOP_Laba4 {
 			Console.Write("Нажмите \"1\" чтобы дать уникальное название новому множеству: ");
 			if (Console.ReadKey().KeyChar == '1') {
 				Console.Write("\nВведите название множества: ");
-				set.Owner.Name = Console.ReadLine();
+				set.OwnerData.Name = Console.ReadLine();
 			}
 			else
-				set.Owner.Name = $"Set{List.Count + 1}";
+				set.OwnerData.Name = $"Set{List.Count + 1}";
 		}
 
 		#endregion
@@ -162,9 +162,9 @@ namespace OOP_Laba4 {
 			if (Equals(sets.Item1, null) || Equals(sets.Item2, null))
 				return;
 			if (sets.Item1 * sets.Item2)
-				Console.WriteLine($"{sets.Item1.Owner.Name} является подмножеством {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} является подмножеством {sets.Item2.OwnerData.Name}");
 			else
-				Console.WriteLine($"{sets.Item1.Owner.Name} не является подмножеством {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} не является подмножеством {sets.Item2.OwnerData.Name}");
 		}
 
 		static void Inequality() {
@@ -172,9 +172,9 @@ namespace OOP_Laba4 {
 			if (Equals(sets.Item1, null) || Equals(sets.Item2, null))
 				return;
 			if (sets.Item1 != sets.Item2)
-				Console.WriteLine($"{sets.Item1.Owner.Name} не равно {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} не равно {sets.Item2.OwnerData.Name}");
 			else
-				Console.WriteLine($"{sets.Item1.Owner.Name} равно {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} равно {sets.Item2.OwnerData.Name}");
 		}
 
 		static void Intersection() {
@@ -182,9 +182,9 @@ namespace OOP_Laba4 {
 			if (Equals(sets.Item1, null) || Equals(sets.Item2, null))
 				return;
 			if (sets.Item1 % sets.Item2)
-				Console.WriteLine($"{sets.Item1.Owner.Name} пересекается с {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} пересекается с {sets.Item2.OwnerData.Name}");
 			else
-				Console.WriteLine($"{sets.Item1.Owner.Name} не пересекается с {sets.Item2.Owner.Name}");
+				Console.WriteLine($"{sets.Item1.OwnerData.Name} не пересекается с {sets.Item2.OwnerData.Name}");
 		}
 
 		static void Info() {
@@ -193,9 +193,9 @@ namespace OOP_Laba4 {
 			foreach (var item in set)
 				Console.Write(item + " ");
 			Console.WriteLine(
-				$"\nID: {set.Owner.Id}" +
-				$"\nИмя: {set.Owner.Name}" +
-				$"\nОрганизация: {set.Owner.Organization}" +
+				$"\nID: {set.OwnerData.Id}" +
+				$"\nИмя: {set.OwnerData.Name}" +
+				$"\nОрганизация: {set.OwnerData.Organization}" +
 				$"\nДата создания: {set.Date}"
 				);
 		}
@@ -257,7 +257,7 @@ namespace OOP_Laba4 {
 			Console.WriteLine("До сортировки: ");
 			foreach (var item in set) 
 				Console.Write(item + " ");
-			StatisticOperation.Sort(ref set, (SortType)(Convert.ToInt32(choice) - 1));
+			StatisticOperation.Sort(set, (SortType)(Convert.ToInt32(choice) - 1));
 			Console.WriteLine("\nПосле сортировки: ");
 			foreach (var item in set) 
 				Console.Write(item + " ");
