@@ -198,7 +198,7 @@ namespace OOP_Laba4 {
 
 		static void Sum() {
 			var set = GetSet();
-			var result = StatisticOperation.Sum(set);
+			var result = set.Sum();
 			if (result.HasValue)
 				Console.WriteLine($"Сумма всех чисел множества: {result.Value}");
 			else
@@ -207,7 +207,7 @@ namespace OOP_Laba4 {
 
 		static void MinMaxDiff() {
 			var set = GetSet();
-			var result = StatisticOperation.MinMaxDiff(set);
+			var result = set.MinMaxDiff();
 			if (result.HasValue)
 				Console.WriteLine($"Разница между самым минимальным и максимальным значением: {result.Value}");
 			else
@@ -216,12 +216,12 @@ namespace OOP_Laba4 {
 
 		static void Counting() {
 			var set = GetSet();
-			Console.WriteLine($"Кол-во элементов во множестве: {StatisticOperation.Count(set)}");
+			Console.WriteLine($"Кол-во элементов во множестве: {set.Count()}");
 		}
 
 		static void ShortestStr() {
 			var set = GetSet();
-			var result = StatisticOperation.Shortest(set);
+			var result = set.Shortest();
 			if (result.OnlyStr)
 				if (result.Result.Count == 1)
 					Console.WriteLine($"Самое короткое слово: {result.Result[0]}");
@@ -253,7 +253,7 @@ namespace OOP_Laba4 {
 			Console.WriteLine("До сортировки: ");
 			foreach (var item in set) 
 				Console.Write(item + " ");
-			StatisticOperation.Sort(set, (SortType)(Convert.ToInt32(choice) - 1));
+			set.Sort((SortType)(Convert.ToInt32(choice) - 1));
 			Console.WriteLine("\nПосле сортировки: ");
 			foreach (var item in set) 
 				Console.Write(item + " ");

@@ -28,7 +28,7 @@ namespace OOP_Laba4 {
 			return diff;
 		}
 
-		public static int Count(Set set) {
+		public static int Count(this Set set) {
 			var list = new List<string>();
 			int counter = 0;
 			foreach (var item in set) {

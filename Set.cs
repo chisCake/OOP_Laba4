@@ -131,7 +131,7 @@ namespace OOP_Laba4 {
 		public static bool operator !=(Set set1, Set set2) {
 			return !set1.IsEqual(set2);
 		}
-		rg
+		
 		// Проверка на равенство
 		public static bool operator ==(Set set1, Set set2) {
 			return set1.IsEqual(set2);
@@ -187,6 +187,10 @@ namespace OOP_Laba4 {
 				Organization = owner.Organization;
 			}
 		}
+	}
+	enum MathOperation {
+		plus,
+		minus
 	}
 }
 #pragma warning restore CS0661 // Тип определяет оператор == или оператор !=, но не переопределяет Object.GetHashCode()
